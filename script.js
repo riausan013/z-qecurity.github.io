@@ -51,7 +51,7 @@ const breachedEmails = [
     "singhraunak9110@gmail.com",
     "ramanryther@gmail.com",
     "ydvrajranjan07@gmail.com",
-    "rajgupta0919@gmail.com",
+    "dasritisha07@gmail.com", // Added this email
     "singhapriyabrata91@gmail.com",
     "radharanibasak2003@gmail.com",
     "priyaliza007@gmail.com",
