@@ -3,26 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Check for Breaches</title>
+    <title>Check your credential breaches</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #1a1a1a;
             color: white;
             text-align: center;
             margin: 0;
             padding: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place canvas in the background */
         }
         header {
-            background-color: #0078d4;
+            background-color: rgba(0, 120, 212, 0.8); /* Semi-transparent background */
             padding: 20px 0;
         }
         header h1 {
             margin: 0;
             font-size: 36px;
+            color: white; /* Ensure text is visible */
         }
         nav {
-            background-color: #003366;
+            background-color: rgba(0, 51, 102, 0.8);
             overflow: hidden;
         }
         nav a {
@@ -35,11 +45,14 @@
             font-size: 18px;
         }
         nav a:hover {
-            background-color: #005ea6;
+            background-color: rgba(0, 94, 166, 0.8);
         }
         .container {
             margin: 50px auto;
             max-width: 600px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
         }
         input[type="text"] {
             width: 80%;
@@ -66,17 +79,24 @@
             margin-top: 30px;
             font-size: 20px;
         }
+        .notification {
+            color: red;
+            font-size: 18px;
+            background-color: rgba(255, 0, 0, 0.7);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
+    <canvas id="matrixCanvas"></canvas>
     <header>
-        <h1>Check If You've Been Pwned</h1>
+        <h1>Check your credential breaches</h1>
     </header>
     <nav>
         <a href="#">Who's Been Pwned</a>
         <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">API</a>
-        <a href="#">About</a>
-        <a href="#">Donate</a>
     </nav>
     <div class="container">
         <p>Enter your email address to check if it's been compromised in a data breach:</p>
@@ -86,23 +106,66 @@
     </div>
 
     <script>
+        // Matrix animation setup
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const matrixCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const characters = matrixCharacters.split("");
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#00FF00";
+            ctx.font = fontSize + "px monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = characters[Math.floor(Math.random() * characters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 50);
+
+        // Email check function
         function checkBreach() {
             const email = document.getElementById("emailInput").value.trim();
             const resultDiv = document.getElementById("result");
-            
+
             if (email === "") {
                 resultDiv.innerHTML = "<p style='color: red;'>Please enter a valid email address.</p>";
                 return;
             }
-            
-            // Placeholder for backend API integration
+
             resultDiv.innerHTML = "<p>Checking for breaches...</p>";
 
-            // Example for integration: replace with an actual backend call
+            // Simulating a breach check for the specific email
             setTimeout(() => {
-                resultDiv.innerHTML = `<p style='color: lightgreen;'>No breaches found for ${email}!</p>`;
+                if (email === "ryanshell003@gmail.com") {
+                    resultDiv.innerHTML = `
+                        <div class="notification">
+                            kk you!
+                        </div>`;
+                } else {
+                    resultDiv.innerHTML = `<p style='color: lightgreen;'>No breaches found for ${email}!</p>`;
+                }
             }, 2000);
         }
+
+        // Adjust canvas size on window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
     </script>
 </body>
 </html>
