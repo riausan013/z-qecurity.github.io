@@ -35,7 +35,27 @@ const breachedEmails = [
     "jane.smith@hotmail.com",
     "test.email123@gmail.com",
     "info@randomdomain.com",
-    "user123@yahoo.com"
+    "user123@yahoo.com",
+    "sahilprasad242@gmail.com",
+    "sahil54.sc51753@gmail.com",
+    "dassini1705@gmail.com",
+    "dhrubajitkarmakar707@gmail.com",
+    "saumitrapal44@gmail.com",
+    "satyamjha0623@gmail.com",
+    "sghara120@gmail.com",
+    "sanaksaha123@gmail.com",
+    "ry679668@gmail.com",
+    "parbinrijwana8@gmail.com",
+    "ryanpradhan8@gmail.com",
+    "officialravisahani@gmail.com",
+    "singhraunak9110@gmail.com",
+    "ramanryther@gmail.com",
+    "ydvrajranjan07@gmail.com",
+    "rajgupta0919@gmail.com",
+    "singhapriyabrata91@gmail.com",
+    "radharanibasak2003@gmail.com",
+    "priyaliza007@gmail.com",
+    "samantarohit420@gmail.com"
 ];
 
 // Email check function
