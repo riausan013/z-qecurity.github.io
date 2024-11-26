@@ -28,6 +28,17 @@ function drawMatrix() {
 }
 setInterval(drawMatrix, 50);
 
+// List of known breached emails
+const breachedEmails = [
+    "ryanshell003@gmail.com",
+    "john.doe@example.com",
+    "jane.smith@hotmail.com",
+    "test.email123@gmail.com",
+    "info@randomdomain.com",
+    "user123@yahoo.com", 
+    "badabook234@gmail.com"
+];
+
 // Email check function
 function checkBreach() {
     const email = document.getElementById("emailInput").value.trim();
@@ -42,7 +53,7 @@ function checkBreach() {
 
     // Simulating a breach check for the specific email
     setTimeout(() => {
-        if (email === "ryanshell003@gmail.com"&& "tomaspional@gmail.com") {
+        if (breachedEmails.includes(email)) {
             resultDiv.innerHTML = `
                 <div class="notification">
                     Alert !! Your email has been found in 1 data breach.<br>
