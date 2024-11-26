@@ -35,13 +35,12 @@ const breachedEmails = [
     "jane.smith@hotmail.com",
     "test.email123@gmail.com",
     "info@randomdomain.com",
-    "user123@yahoo.com", 
-    "badabook234@gmail.com"
+    "user123@yahoo.com"
 ];
 
 // Email check function
 function checkBreach() {
-    const email = document.getElementById("emailInput").value.trim();
+    const email = document.getElementById("emailInput").value.trim().toLowerCase(); // Normalize the input
     const resultDiv = document.getElementById("result");
 
     if (email === "") {
