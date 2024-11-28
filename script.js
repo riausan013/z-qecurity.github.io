@@ -47,7 +47,6 @@ const breachedEmails = [
     "ry679668@gmail.com",
     "parbinrijwana8@gmail.com",
     "ryanpradhan8@gmail.com",
-    "officialravisahani@gmail.com",
     "singhraunak9110@gmail.com",
     "ramanryther@gmail.com",
     "ydvrajranjan07@gmail.com",
